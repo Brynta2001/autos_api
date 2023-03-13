@@ -15,9 +15,8 @@ public class Auto implements Serializable{
 	@Column(name="id_auto")
 	private Integer id;
 	
-	@Enumerated
 	@Column(name="marca")
-	private AutoMarca marca;
+	private String marca;
 	
 	@Column(name="modelo")
 	private String modelo;
@@ -32,7 +31,7 @@ public class Auto implements Serializable{
 		
 	}
 	
-	public Auto(AutoMarca marca, String modelo, String anio, Double precio) {
+	public Auto(String marca, String modelo, String anio, Double precio) {
 		super();
 		this.marca = marca;
 		this.modelo = modelo;
@@ -46,10 +45,10 @@ public class Auto implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public AutoMarca getMarca() {
+	public String getMarca() {
 		return marca;
 	}
-	public void setMarca(AutoMarca marca) {
+	public void setMarca(String marca) {
 		this.marca = marca;
 	}
 	public String getModelo() {
