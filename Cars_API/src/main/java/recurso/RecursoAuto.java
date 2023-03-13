@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 
 import modelo.dao.DAOFactory;
 import modelo.entidades.Auto;
+import modelo.entidades.AutoMarca;
 
 @Path("/autos")
 public class RecursoAuto {
@@ -24,11 +25,9 @@ public class RecursoAuto {
 	public List<Auto> getAutos() {
 		return DAOFactory.getFactory().getAutoDAO().getAll();
 	}
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
-	//http://localhost:8080/nombre_proyecto/personas/3
 	public Auto getAutoByParam(@PathParam("id")int id) {
 		return DAOFactory.getFactory().getAutoDAO().getById(id);
 	}
@@ -36,9 +35,15 @@ public class RecursoAuto {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/query")
-	//http://localhost:8080/nombre_proyecto/personas/query?id=3
 	public Auto getAutoByQueryParam(@QueryParam("id")int id) {
 		return DAOFactory.getFactory().getAutoDAO().getById(id);
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/autosbybrand")
+	public List<Auto> getAutosByBrand(@QueryParam("marca")AutoMarca marca) {
+		return DAOFactory.getFactory().getAutoDAO().getByBrand(marca);
 	}
 	
 	@POST
