@@ -5,6 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import modelo.dao.GenericDAO;
 
@@ -26,8 +30,12 @@ public class JPAGenericDAO<T, ID> implements GenericDAO<T, ID> {
 
 	@Override
 	public List<T> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.persistentClass);
+        Root<T> root = criteriaQuery.from(this.persistentClass);
+        criteriaQuery.select(root);
+        Query query = em.createQuery(criteriaQuery);
+        return query.getResultList();
 	}
 
 	@Override
