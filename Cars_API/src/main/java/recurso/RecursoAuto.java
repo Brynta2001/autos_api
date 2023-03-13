@@ -29,7 +29,7 @@ public class RecursoAuto {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}")
 	//http://localhost:8080/nombre_proyecto/personas/3
-	public Auto getAutoaByParam(@PathParam("id")int id) {
+	public Auto getAutoByParam(@PathParam("id")int id) {
 		return DAOFactory.getFactory().getAutoDAO().getById(id);
 	}
 	
