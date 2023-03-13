@@ -6,5 +6,5 @@ import modelo.entidades.Auto;
 import modelo.entidades.AutoMarca;
 
 public interface AutoDAO extends GenericDAO<Auto, Integer>{
-	public List<Auto> getByBrand(AutoMarca marca);
+	public List<Auto> getByBrand(String marca);
 }

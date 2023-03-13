@@ -42,7 +42,7 @@ public class RecursoAuto {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/autosbybrand")
-	public List<Auto> getAutosByBrand(@QueryParam("marca")AutoMarca marca) {
+	public List<Auto> getAutosByBrand(@QueryParam("marca")String marca) {
 		return DAOFactory.getFactory().getAutoDAO().getByBrand(marca);
 	}
 	

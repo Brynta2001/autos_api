@@ -15,7 +15,7 @@ public class JPAAutoDAO extends JPAGenericDAO<Auto, Integer> implements AutoDAO 
 	}
 
 	@Override
-	public List<Auto> getByBrand(AutoMarca marca) {
+	public List<Auto> getByBrand(String marca) {
 		String JPQL = "SELECT a FROM Auto a " 
 					+ "WHERE a.marca = :marca";
 		Query query = em.createQuery(JPQL);
